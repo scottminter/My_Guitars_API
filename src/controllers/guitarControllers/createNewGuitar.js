@@ -4,9 +4,11 @@ const newGuitarSchema = require("./../../validationSchemas/guitarSchemas/createG
 
 const createNewGuitar = async (guitarData) => {
   let isValid = {};
+
   return new Promise((resolve, reject) => {
     isValid = newGuitarSchema.validate(guitarData);
     console.log(isValid);
+
     if (isValid.error) {
       return reject({
         status: 400,
