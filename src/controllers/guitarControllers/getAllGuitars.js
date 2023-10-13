@@ -1,7 +1,11 @@
 "use strict";
 
-const getAllGuitars = () => {
-  console.log(`Get all guitars`);
+const getAllGuitars = async () => {
+  return new Promise((resolve, reject) => {
+    resolve({
+      message: "Get all guitars",
+    });
+  });
 };
 
 module.exports = getAllGuitars;

@@ -1,6 +1,6 @@
 "use strict";
 
-const getGuitarById = (guitarId) => {
+const getGuitarById = async (guitarId) => {
   return new Promise((resolve, reject) => {
     resolve({
       message: "Get guitar by ID",
