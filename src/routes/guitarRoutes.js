@@ -16,8 +16,14 @@ router.route("/:guitarId").get(async (req, res) => {
   res.json(data);
 });
 
-router.route("/").post((req, res) => {
-  res.json({ message: "Add a new guitar to the collection" });
+router.route("/").post(async (req, res) => {
+  const body = req.body;
+  try {
+    const response = await guitarController.createNewGuitar(body);
+    res.json(response);
+  } catch (err) {
+    res.status(err.status).send(err.message);
+  }
 });
 
 router.route("/:guitarId").put((req, res) => {
