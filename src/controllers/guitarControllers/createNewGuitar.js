@@ -15,6 +15,7 @@ const createNewGuitar = async (guitarData) => {
         message: isValid.error.details[0].message,
       });
     }
+
     return resolve({
       message: "Create new guitar",
       data: isValid.value,

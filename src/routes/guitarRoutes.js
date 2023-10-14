@@ -26,14 +26,24 @@ router.route("/").post(async (req, res) => {
   }
 });
 
-router.route("/:guitarId").put((req, res) => {
-  const guitarId = req.params.guitarId;
-  res.json({ message: `Update existing guitar by ID: ${guitarId}` });
+router.route("/:guitarId").put(async (req, res) => {
+  const body = req.body;
+  try {
+    const response = await guitarController.updateGuitar(body);
+    res.json(response);
+  } catch (err) {
+    res.status(err.status).send(err.message);
+  }
 });
 
-router.route("/:guitarId").delete((req, res) => {
+router.route("/:guitarId").delete(async (req, res) => {
   const guitarId = req.params.guitarId;
-  res.json({ message: `Delete guitar by ID: ${guitarId}` });
+  try {
+    const response = await guitarController.deleteGuitar(guitarId);
+    res.json(response);
+  } catch (err) {
+    res.status(err.status).send(err.message);
+  }
 });
 
 module.exports = router;
