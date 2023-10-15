@@ -1,11 +1,9 @@
 "use strict";
 
+const guitarService = require("./../../services").guitarService;
+
 const deleteGuitar = async (guitarId) => {
-  return new Promise((resolve, reject) => {
-    resolve({
-      message: `Delete guitar by ID: ${guitarId}`,
-    });
-  });
+  return await guitarService.deleteGuitar(guitarId);
 };
 
 module.exports = deleteGuitar;

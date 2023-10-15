@@ -26,7 +26,7 @@ router.route("/").post(async (req, res) => {
   }
 });
 
-router.route("/:guitarId").put(async (req, res) => {
+router.route("/:guitarId").patch(async (req, res) => {
   const body = req.body;
   try {
     const response = await guitarController.updateGuitar(body);

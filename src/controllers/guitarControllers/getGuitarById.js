@@ -1,11 +1,9 @@
 "use strict";
 
+const guitarService = require("./../../services").guitarService;
+
 const getGuitarById = async (guitarId) => {
-  return new Promise((resolve, reject) => {
-    resolve({
-      message: "Get guitar by ID",
-    });
-  });
+  return await guitarService.guitarGuitarById(guitarId);
 };
 
 module.exports = getGuitarById;

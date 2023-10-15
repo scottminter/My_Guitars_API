@@ -1,11 +1,9 @@
 "use strict";
 
+const guitarService = require("./../../services").guitarService;
+
 const getAllGuitars = async () => {
-  return new Promise((resolve, reject) => {
-    resolve({
-      message: "Get all guitars",
-    });
-  });
+  return await guitarService.getAllGuitars();
 };
 
 module.exports = getAllGuitars;
