@@ -5,6 +5,7 @@ const guitarDAL = {
   guitarGuitarById: require("./getGuitarByIdDAL"),
   createNewGuitar: require("./createNewGuitarDAL"),
   updateGuitar: require("./updateGuitarDAL"),
+  deleteGuitar: require("./deleteGuitarDAL"),
 };
 
 module.exports = guitarDAL;
