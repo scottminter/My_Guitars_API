@@ -5,15 +5,22 @@ const router = express.Router();
 const guitarController = require("./../controllers").guitarController;
 
 router.route("/").get(async (req, res) => {
-  const data = await guitarController.getAllGuitars();
-  res.json(data);
+  try {
+    const data = await guitarController.getAllGuitars();
+    res.json(data);
+  } catch (err) {
+    res.status(400).send(err);
+  }
 });
 
 router.route("/:guitarId").get(async (req, res) => {
   const guitarId = req.params.guitarId;
-  const data = await guitarController.getGuitarById(guitarId);
-
-  res.json(data);
+  try {
+    const data = await guitarController.getGuitarById(guitarId);
+    res.json(data);
+  } catch (err) {
+    res.status(400).send(err);
+  }
 });
 
 router.route("/").post(async (req, res) => {

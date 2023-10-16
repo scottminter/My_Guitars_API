@@ -22,7 +22,7 @@ const getGuitarByIdDAL = async (id) => {
       [id]
     );
 
-    return results;
+    return results.length > 0 ? results[0] : {};
   } catch (err) {
     throw err;
   }
