@@ -10,19 +10,14 @@ const limiter = new RateLimiterMemory({
 });
 
 const rateLimiterMiddleware = (req, res, next) => {
-  if (req.url.startsWith("/tokens")) {
-    console.log("rate limit tokens route");
-    limiter
-      .consume(req.ip)
-      .then(() => {
-        next();
-      })
-      .catch(() => {
-        res.status(429).send("Too Many Requests");
-      });
-  } else {
-    next();
-  }
+  limiter
+    .consume(req.ip)
+    .then(() => {
+      next();
+    })
+    .catch(() => {
+      res.status(429).send("Too Many Requests");
+    });
 };
 
 module.exports = rateLimiterMiddleware;
