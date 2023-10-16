@@ -4,9 +4,8 @@ const mysqlConnection = require("./../connections").mysql;
 
 const getAllGuitarsDAL = async () => {
   const conn = await mysqlConnection();
-
-  return new Promise((resolve, reject) => {
-    conn.query(
+  try {
+    const [results] = await conn.execute(
       `SELECT 
         id,
         brand,
@@ -16,17 +15,15 @@ const getAllGuitarsDAL = async () => {
         current_string_guage,
         description,
         is_acoustic,
-        is_electric
-      FROM guitar_collection.guitars;`,
-      (err, results, fields) => {
-        if (err) {
-          reject(err);
-        }
-
-        resolve(results);
-      }
+        is_electric,
+        estimated_value
+      FROM guitar_collection.guitars;`
     );
-  });
+
+    return results;
+  } catch (err) {
+    throw err;
+  }
 };
 
 module.exports = getAllGuitarsDAL;

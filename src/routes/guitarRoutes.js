@@ -22,17 +22,17 @@ router.route("/").post(async (req, res) => {
     const response = await guitarController.createNewGuitar(body);
     res.json(response);
   } catch (err) {
-    res.status(err.status).send(err.message);
+    res.status(400).send(err);
   }
 });
 
-router.route("/:guitarId").patch(async (req, res) => {
+router.route("/").patch(async (req, res) => {
   const body = req.body;
   try {
     const response = await guitarController.updateGuitar(body);
     res.json(response);
   } catch (err) {
-    res.status(err.status).send(err.message);
+    res.status(400).send(err);
   }
 });
 
@@ -42,7 +42,7 @@ router.route("/:guitarId").delete(async (req, res) => {
     const response = await guitarController.deleteGuitar(guitarId);
     res.json(response);
   } catch (err) {
-    res.status(err.status).send(err.message);
+    res.status(400).send(err);
   }
 });
 

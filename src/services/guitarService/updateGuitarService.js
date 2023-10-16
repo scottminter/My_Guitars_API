@@ -1,12 +1,9 @@
 "use strict";
 
+const guitarDAL = require("./../../database/guitarDAL");
+
 const updateGuitarService = async (guitarData) => {
-  return new Promise((resolve, reject) => {
-    resolve({
-      message: "Update guitar by guitar service",
-      data: guitarData,
-    });
-  });
+  return await guitarDAL.updateGuitar(guitarData);
 };
 
 module.exports = updateGuitarService;

@@ -4,15 +4,14 @@ const guitarService = require("./../../services").guitarService;
 const newGuitarSchema = require("./../../validationSchemas/guitarSchemas/createGuitarSchema");
 
 const createNewGuitar = async (guitarData) => {
-  const isValid = newGuitarSchema.validate(guitarData);
-  if (isValid.error) {
-    return reject({
-      status: 400,
-      message: isValid.error.details[0].message,
-    });
+  let isValid = {};
+  try {
+    isValid = await newGuitarSchema.validateAsync(guitarData);
+  } catch (err) {
+    throw err.details[0].message;
   }
 
-  return await guitarService.createNewGuitar(isValid.value);
+  return await guitarService.createNewGuitar(isValid);
 };
 
 module.exports = createNewGuitar;

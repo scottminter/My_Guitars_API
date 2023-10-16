@@ -1,12 +1,9 @@
 "use strict";
 
+const guitarDAL = require("./../../database/guitarDAL");
+
 const createNewGuitarService = async (guitarData) => {
-  return new Promise((resolve, reject) => {
-    resolve({
-      message: "Create a new guitar by guitar service",
-      data: guitarData,
-    });
-  });
+  return await guitarDAL.createNewGuitar(guitarData);
 };
 
 module.exports = createNewGuitarService;
