@@ -4,7 +4,7 @@ const { RateLimiterMemory } = require("rate-limiter-flexible");
 
 // TODO: these should be moved to a .env file
 const limiter = new RateLimiterMemory({
-  points: 2, // allowed attempts
+  points: 10, // allowed attempts
   duration: 50, // in this period of time
   blockDuration: 1, // block for this duration
 });

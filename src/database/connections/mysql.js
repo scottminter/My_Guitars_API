@@ -1,4 +1,4 @@
-"use static";
+"use strict";
 
 const mysql = require("mysql2/promise");
 const configs = require("dotenv").config().parsed;
